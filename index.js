@@ -12,6 +12,8 @@ const app = express()
 app.use(cors())
 
 
-app.listen()
+app.listen(3001,()=>{
+    console.log(`application run in port 3000`)
+})
 
 
