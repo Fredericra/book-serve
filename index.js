@@ -1,19 +1,19 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import cors from 'cors'
-import dotenv from 'dotenv'
 import { db }  from './Database/DB.js'
+import { Router } from './Route/User.route.js'
 
-dotenv.config()
-
-
+const Port = 3000
 
 const app = express()
 app.use(cors())
+app.use(express.json())
+app.use('/api',Router)
 
 
-app.listen(3001,()=>{
-    console.log(`application run in port 3000`)
+app.listen(Port,()=>{
+    console.log(`application run in port ${Port}`)
 })
 
 
