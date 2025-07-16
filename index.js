@@ -2,14 +2,14 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import cors from 'cors'
 import { db }  from './Database/DB.js'
-import { Router } from './Route/User.route.js'
+import useRoute from './Route/User.route.js'
 
-const Port = 3000
+const Port = 5000
 
 const app = express()
 app.use(cors())
 app.use(express.json())
-app.use('/api',Router)
+app.use('/api',useRoute)
 
 
 app.listen(Port,()=>{

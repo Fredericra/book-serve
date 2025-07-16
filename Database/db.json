@@ -1,0 +1,15 @@
+{
+  "users": [
+    {
+      "id": 0,
+      "name": "frederic",
+      "email": "frederic@devin.com",
+      "password": "$2b$10$rOIw1BVDEZbDNigXCAXryO6Thb1f9xukRa8RkkfK/xvMRfZAdDOCK",
+      "check": true,
+      "connexion": true,
+      "admin": null
+    }
+  ],
+  "book": [],
+  "post": []
+}
