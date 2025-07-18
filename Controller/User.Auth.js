@@ -17,10 +17,9 @@ export const Sigin = async (req, res) => {
     }
     else {
         const hash = await bcrypt.hash(password, 10)
-        let admin = null;
-        admin === "bokymora@gmail.com"?true:false;
+        const admin = email === "bokymora@gmail.com"?true:false;
         const Auth = {
-            id: id, name: name, email: email, password: hash, check: accept,connexion:true,admin:admin
+            id: id, name: name,lastname:lastname, email: email, password: hash, check: accept,connexion:true,admin:admin
         }
         users.push(Auth)
         await db.write()
@@ -40,7 +39,9 @@ export const Login = async (req, res) => {
         const compare = await bcrypt.compare(password,findEmail.password)
         if(compare)
         {
+            findEmail.connexion = true
             res.status(201).send({ message: "connexion valide", access: true,user:findEmail })
+            await db.write()
         }
         else
         {
@@ -56,7 +57,6 @@ export const Login = async (req, res) => {
          
     
 
-    await db.write()
 }
 
 

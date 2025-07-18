@@ -3,11 +3,12 @@
     {
       "id": 0,
       "name": "frederic",
+      "lastname": "frederic",
       "email": "frederic@devin.com",
-      "password": "$2b$10$rOIw1BVDEZbDNigXCAXryO6Thb1f9xukRa8RkkfK/xvMRfZAdDOCK",
+      "password": "$2b$10$9aI5p1by9EdKR4M6gRMEA.KV5oRcGTiCF2XNkwZKkoJ1pTeY9AYny",
       "check": true,
       "connexion": true,
-      "admin": null
+      "admin": false
     }
   ],
   "book": [],
