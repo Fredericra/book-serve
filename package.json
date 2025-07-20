@@ -21,6 +21,7 @@
     "crypto-js": "^4.2.0",
     "dotenv": "^17.2.0",
     "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
     "lodash": "^4.17.21",
     "lowdb": "^7.0.1",
     "secure-web-storage": "^1.0.2"

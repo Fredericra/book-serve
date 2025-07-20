@@ -2,15 +2,25 @@
   "users": [
     {
       "id": 0,
-      "name": "frederic",
-      "lastname": "frederic",
-      "email": "frederic@devin.com",
-      "password": "$2b$10$9aI5p1by9EdKR4M6gRMEA.KV5oRcGTiCF2XNkwZKkoJ1pTeY9AYny",
+      "name": "bokymora",
+      "lastname": "bokymora",
+      "email": "bokymora@gmail.com",
+      "password": "$2b$10$LxoNWhBEHmNp2lAP/LA3X.gmTSWB7mdffV8nfj8EjM8dyV6TDTEFy",
       "check": true,
-      "connexion": true,
-      "admin": false
+      "connexion": false,
+      "admin": true,
+      "type": 0
     }
   ],
   "book": [],
-  "post": []
+  "post": [],
+  "userparams": [
+    {
+      "id": 0,
+      "user_id": 0,
+      "type": 0,
+      "admin": true,
+      "verified": false
+    }
+  ]
 }
