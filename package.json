@@ -17,6 +17,7 @@
     "bcrypt": "^6.0.0",
     "bcryptjs": "^3.0.2",
     "body-parser": "^2.2.0",
+    "cloudinary": "^2.7.0",
     "cors": "^2.8.5",
     "crypto-js": "^4.2.0",
     "dotenv": "^17.2.0",
@@ -24,7 +25,9 @@
     "jsonwebtoken": "^9.0.2",
     "lodash": "^4.17.21",
     "lowdb": "^7.0.1",
-    "secure-web-storage": "^1.0.2"
+    "nodemailer": "^7.0.5",
+    "secure-web-storage": "^1.0.2",
+    "twilio": "^5.7.3"
   },
   "devDependencies": {
     "concurrently": "^9.2.0",

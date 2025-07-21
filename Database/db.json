@@ -2,14 +2,36 @@
   "users": [
     {
       "id": 0,
-      "name": "bokymora",
-      "lastname": "bokymora",
-      "email": "bokymora@gmail.com",
-      "password": "$2b$10$LxoNWhBEHmNp2lAP/LA3X.gmTSWB7mdffV8nfj8EjM8dyV6TDTEFy",
+      "name": "frederic",
+      "lastname": "frederic",
+      "email": "randriatsilavinafrederic0@gmail.com",
+      "password": "$2b$10$GThqLX4F.gVf.HBHgjyVD.jPgaQAK4phgEIwHqvZ7iII8Dmvg43U2",
+      "check": true,
+      "connexion": false,
+      "admin": false,
+      "checked": true
+    },
+    {
+      "id": 1,
+      "name": "jeanrafety",
+      "lastname": "jeanrafety",
+      "email": "fetisonmananajean@gmail.com",
+      "password": "$2b$10$DzvEmtqk.KUXjB32F2rVVug6UutWuKvM0kKiOwJxmZcztjtdmqt/K",
+      "check": true,
+      "connexion": false,
+      "admin": false,
+      "checked": true
+    },
+    {
+      "id": 2,
+      "name": "administrateur",
+      "lastname": "adminadmin",
+      "email": "bokyshoping@gmail.com",
+      "password": "$2b$10$nQzHD2Gys/GylGRR1iwyBeLDYjBiFHbt3pMO5rtg2K5TWOaot7vXe",
       "check": true,
       "connexion": false,
       "admin": true,
-      "type": 0
+      "checked": true
     }
   ],
   "book": [],
@@ -19,8 +41,34 @@
       "id": 0,
       "user_id": 0,
       "type": 0,
+      "admin": false,
+      "verified": true,
+      "date": "2025/07/21, 11:42:00",
+      "time": "11:42:00",
+      "code": "317725",
+      "checked": true
+    },
+    {
+      "id": 1,
+      "user_id": 1,
+      "type": 0,
+      "admin": false,
+      "verified": true,
+      "date": "2025/07/21, 12:26:45",
+      "time": "12:26:45",
+      "code": "399050",
+      "checked": true
+    },
+    {
+      "id": 2,
+      "user_id": 2,
+      "type": 0,
       "admin": true,
-      "verified": false
+      "verified": true,
+      "date": "2025/07/21, 14:40:46",
+      "time": "14:40:46",
+      "code": "167776",
+      "checked": true
     }
   ]
 }
