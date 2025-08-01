@@ -1,7 +1,10 @@
 import { db } from '../Database/DB.js'
-import bcrypt from 'bcryptjs'
-import { secretcode } from '../Utility/Code.js'
+import bcrypt, { hash } from 'bcryptjs'
+import { ACCESS_TOKEN_SECRET, generateToken, hasing, message, secretcode } from '../Utility/Code.js'
 import { setEMail, transport } from '../Utility/email.js'
+
+
+
 
 
 export const Sigin = async (req, res) => {
@@ -12,7 +15,14 @@ export const Sigin = async (req, res) => {
     const id = users.length
     const findEmail = users.find(item => item.email === email)
     if (typeof findEmail === "object" || findEmail === 'undefined') {
-        res.status(202).send({ message: 'email deja exists, essaye nouveau', props: 'email', access: false })
+        const hashingMessage = await hasing(
+            message(
+            'email deja exists essaye nouveau',
+            false,
+            '',
+            '')
+        )
+        res.status(202).send(hashingMessage)
         return
     }
     else {
@@ -46,7 +56,9 @@ export const Sigin = async (req, res) => {
         users.push(Auth);
         await transport.sendMail(setEMail(secret,email))
         await db.write();
-        res.status(201).send({ message: 'inscrire bien enregistre', access: true, user: Auth,code:secret })
+        
+        const messages = message('inscrire bien enregistre',true,'',findEmail,generateToken(findEmail),code)
+        res.status(201).send(await hasing(messages))
     }
 
 }
@@ -60,11 +72,13 @@ export const getUser = async (req,res)=>{
     const findUserParams = userparams.find(item => item.user_id === parseInt(id));
     if(findUser)
     {
-        res.status(201).send({message:'user trouve',access:true,user:findUser,params:findUserParams})
+        const messages = message('user trouve',true,'',findEmail,generateToken(findEmail),'',findUserParams)
+        res.status(201).send(await hasing(messages))
     }
     else
     {
-        res.status(201).send({message:'user non trouve',access:false,})
+        const messages = message('user non trouve',false,'','','','','')
+        res.status(201).send(await hasing(messages) )
         return;
     }
 }
@@ -75,37 +89,38 @@ export const Login = async (req, res) => {
     let { users,userparams } = db.data
     const findEmail = users.find(item => item.email === email)
     if (findEmail) {
-        if(findEmail.checked)
-        {
             const compare = await bcrypt.compare(password, findEmail.password)
             if (compare) {
-               users = [...users.map(element => {
-                    if (element.email === email) element.connexion = true;
-                    return element;
-                })]
-                res.status(201).send({ message: "connexion valide", access: true, user: findEmail,checked:true })
-                await db.write()
+                if(findEmail.checked)
+                {
+                    users = [...users.map(element => {
+                         if (element.email === email) element.connexion = true;
+                         return element;
+                     })]
+                     const messages = message('connexion valide',true,'',findEmail,generateToken(findEmail),'','',true)
+                     await db.write(await hasing(messages))
+                }
+                else{
+                    const newCode = secretcode();
+                    userparams = [...userparams.map(element=>{
+                        if(findEmail.id===element.user_id) element.code = newCode;
+                        return element;
+                    })]
+                    // const code = userparams.find(item=>item.user_id===findEmail.id)?.code;
+                    // await transport.sendMail(setEMail(code,email.trim()));
+                    const messages = message('veuillez confirme votre compte',true,'',findEmail,generateToken(findEmail),'','',false)
+                    await db.write(await hasing(messages));
+                }
             }
             else {
-                res.status(201).send({ message: "mots de pass incorrect", access: false, props: 'password' })
+                const messages = message('mots de pass incorrect',false,'password')
+                res.status(201).send(await hasing(messages))
             }
-        }
-        else
-        {
-            const newCode = secretcode();
-            userparams = [...userparams.map(element=>{
-                if(findEmail.id===element.user_id) element.code = newCode;
-                return element;
-            })]
-            const code = userparams.find(item=>item.user_id===findEmail.id)?.code;
-            await transport.sendMail(setEMail(code,email.trim()));
-            res.status(201).send({message:'veuillez confirme votre compte',access:true,checked:false,user:findEmail})
-            await db.write();
-        }
 
     }
     else {
-        res.status(201).send({ message: "email n'exite pas !", access: false, props: 'email' })
+        const messages = message("email n'exit pas",false,'email')
+        res.status(201).send(await hasing(messages))
     }
 
 
@@ -135,19 +150,25 @@ export const verify = async (req,res)=>{
             }
             return element;
         })]
-        res.status(201).send({message:'code valide',access:true,user:findUser})
+        const messages = message('code valide',true,'',findUser,generateToken(findUser))
+        res.status(201).send(await hasing(messages))
         await db.write();
     }
     else
     {
-        res.status(201).send({message:'invalid code, veuillez entre nouveau',access:false})
+        const messages = message('invalid code, veuillez entre nouveau',false,'',findUser,generateToken(findUser))
+        res.status(201).send(await hasing(messages))
         return;
     }
 }
 
 export const logout = async (req, res) => {
     const { email } = req.body
-    console.log(email)
+    const token = req.headers.authorizatin?.split(' ')[1]
+    if(token)
+    {
+        blacklist.add(token)
+    }
     await db.read();
     let { users } = db.data
     users = [...users.map(element => {
@@ -155,7 +176,8 @@ export const logout = async (req, res) => {
         return element;
     })]
     await db.write();
-    res.status(201).send({ message: 'deconnexion', access: true })
+    const messages = message('deconnexion',true,'deconnexion')
+    res.status(201).send(await hasing(messages))
 }
 
 
@@ -174,7 +196,14 @@ export const sendMessage = async (req,res)=>{
     };
     messages.push(newMessage);
     
-    res.status(201).send({message:'message envoyer',access:true})
+    res.status(201).send({message:'message envoyer',success:true})
     await db.write();
     
+}
+
+
+
+export const authVerify = async(req,res)=>{
+   const data = await hasing({name:'frederic',age:28});
+   res.status(201).send({message:'',hash:data,success:true})
 }

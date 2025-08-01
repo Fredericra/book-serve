@@ -1,6 +1,8 @@
 import nodeMailer from 'nodemailer';
+import dotenv from 'dotenv'
 import { db } from '../Database/DB.js';
 
+dotenv.config()
 const user = 'bokyshoping@gmail.com';
 const pass = 'rmafskktnxlbsnpc'
 
