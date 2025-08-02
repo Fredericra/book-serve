@@ -1,0 +1,32 @@
+{
+  "messages": [
+    {
+      "id": 0,
+      "user_id": null,
+      "email": "randriatsilavinafrederic0@gmail.com",
+      "message": "fredermdfdf",
+      "date": "2025-08-02T12:07:57.021Z"
+    },
+    {
+      "id": 1,
+      "user_id": 0,
+      "email": "randriatsilavinafrederic0@gmail.com",
+      "message": "meric",
+      "date": "2025-08-02T12:10:39.117Z"
+    },
+    {
+      "id": 2,
+      "user_id": null,
+      "email": "frederic@devin.com",
+      "message": "fmdfd",
+      "date": "2025-08-02T12:12:57.037Z"
+    },
+    {
+      "id": 3,
+      "user_id": 0,
+      "email": "randriatsilavinafrederic0@gmail.com",
+      "message": "frederic",
+      "date": "2025-08-02T12:13:19.540Z"
+    }
+  ]
+}

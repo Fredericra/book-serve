@@ -10,6 +10,17 @@
       "connexion": false,
       "admin": false,
       "checked": true
+    },
+    {
+      "id": 1,
+      "name": "ADMINISTRATOR",
+      "lastname": "bokymora",
+      "email": "bokyshoping@gmail.com",
+      "password": "$2b$10$sOdzr2J5IkT6w5bSBLsV5Olu1blGVF1d1wlMTmDVLV33Ob2n8Y5xe",
+      "check": true,
+      "connexion": true,
+      "admin": true,
+      "checked": true
     }
   ],
   "book": [],
@@ -23,7 +34,26 @@
       "verified": false,
       "date": "2025/08/02, 10:25:15",
       "time": "10:25:15",
-      "code": "913014"
+      "code": "669826"
+    },
+    {
+      "id": 1,
+      "user_id": 1,
+      "type": 0,
+      "admin": true,
+      "verified": false,
+      "date": "2025/08/02, 11:07:48",
+      "time": "11:07:48",
+      "code": "239507"
+    }
+  ],
+  "messages": [
+    {
+      "id": 0,
+      "user_id": null,
+      "email": "randriatsilavinafrederic0@gmail.com",
+      "message": "je veux Lovako T3",
+      "date": "2025-08-02T11:54:52.459Z"
     }
   ]
 }
