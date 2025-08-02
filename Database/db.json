@@ -2,80 +2,14 @@
   "users": [
     {
       "id": 0,
-      "name": "frederic",
-      "lastname": "frederic",
+      "name": "frederics",
+      "lastname": "frederics",
       "email": "randriatsilavinafrederic0@gmail.com",
-      "password": "$2b$10$GThqLX4F.gVf.HBHgjyVD.jPgaQAK4phgEIwHqvZ7iII8Dmvg43U2",
+      "password": "$2b$10$Kjgi8NzPLmuY3evAGgI8j.0S7v.UBYkVaNqtML7W0JBsKwpKq/zGS",
       "check": true,
       "connexion": false,
       "admin": false,
       "checked": true
-    },
-    {
-      "id": 1,
-      "name": "jeanrafety",
-      "lastname": "jeanrafety",
-      "email": "fetisonmananajean@gmail.com",
-      "password": "$2b$10$DzvEmtqk.KUXjB32F2rVVug6UutWuKvM0kKiOwJxmZcztjtdmqt/K",
-      "check": true,
-      "connexion": false,
-      "admin": false,
-      "checked": true
-    },
-    {
-      "id": 2,
-      "name": "administrateur",
-      "lastname": "adminadmin",
-      "email": "bokyshoping@gmail.com",
-      "password": "$2b$10$nQzHD2Gys/GylGRR1iwyBeLDYjBiFHbt3pMO5rtg2K5TWOaot7vXe",
-      "check": true,
-      "connexion": false,
-      "admin": true,
-      "checked": true
-    },
-    {
-      "id": 3,
-      "name": "frederic",
-      "lastname": "frederic",
-      "email": "bokyshoping@gmail.coms",
-      "password": "$2b$10$/k/zcUH9ujij46cAVTkjcOPdjkkt1KLDfrAsKYaQmH0NY.ImZtUPm",
-      "check": true,
-      "connexion": false,
-      "admin": false,
-      "checked": false
-    },
-    {
-      "id": 4,
-      "name": "frrederic",
-      "lastname": "frederic",
-      "email": "frederic@devin.com",
-      "password": "$2b$10$gIywU1CjcRLNkqCzz7scn.4cD6szL/Brd2mgYFCdAHkY7YsJJcmt.",
-      "check": true,
-      "connexion": false,
-      "admin": false,
-      "checked": false
-    },
-    {
-      "id": 5,
-      "name": "frederic",
-      "lastname": "frederic",
-      "email": "frederic@gmail.com",
-      "password": "$2b$10$yZpQigx1v3TXIOFh4MU7QOteoBfznsCEMbzLOZLdGSJNNRBuMJ6i2",
-      "check": true,
-      "connexion": false,
-      "admin": false,
-      "checked": false
-    },
-    {
-      "id": 6,
-      "name": "frederic",
-      "lastname": "frederic",
-      "email": "frederic@devin.coma",
-      "password": "$2b$10$/6yC1N6w.8kGH8gs4d3.Te2jUhvVfvQcx7QswC4NJM3s30UGiFbii",
-      "check": true,
-      "connexion": false,
-      "admin": false,
-      "checked": false
     }
   ],
   "book": [],
@@ -86,73 +20,10 @@
       "user_id": 0,
       "type": 0,
       "admin": false,
-      "verified": true,
-      "date": "2025/07/21, 11:42:00",
-      "time": "11:42:00",
-      "code": "317725",
-      "checked": true
-    },
-    {
-      "id": 1,
-      "user_id": 1,
-      "type": 0,
-      "admin": false,
-      "verified": true,
-      "date": "2025/07/21, 12:26:45",
-      "time": "12:26:45",
-      "code": "399050",
-      "checked": true
-    },
-    {
-      "id": 2,
-      "user_id": 2,
-      "type": 0,
-      "admin": true,
-      "verified": true,
-      "date": "2025/07/21, 14:40:46",
-      "time": "14:40:46",
-      "code": "167776",
-      "checked": true
-    },
-    {
-      "id": 3,
-      "user_id": 3,
-      "type": 0,
-      "admin": false,
       "verified": false,
-      "date": "2025/07/22, 11:45:33",
-      "time": "11:45:33",
-      "code": "967039"
-    },
-    {
-      "id": 4,
-      "user_id": 4,
-      "type": 0,
-      "admin": false,
-      "verified": false,
-      "date": "2025/07/22, 11:47:34",
-      "time": "11:47:34",
-      "code": "284470"
-    },
-    {
-      "id": 5,
-      "user_id": 5,
-      "type": 0,
-      "admin": false,
-      "verified": false,
-      "date": "2025/07/22, 11:49:21",
-      "time": "11:49:21",
-      "code": "032018"
-    },
-    {
-      "id": 6,
-      "user_id": 6,
-      "type": 0,
-      "admin": false,
-      "verified": false,
-      "date": "2025/07/22, 11:50:14",
-      "time": "11:50:14",
-      "code": "815121"
+      "date": "2025/08/02, 10:25:15",
+      "time": "10:25:15",
+      "code": "913014"
     }
   ]
 }

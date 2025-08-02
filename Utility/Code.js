@@ -8,7 +8,7 @@ const SimpleCrypto = pkg.default
 const CryptKey = new SimpleCrypto(key);
 
 export const hasing = async(data)=>{
-    return CryptKey.encrypt(data);
+    return CryptKey.encrypt(JSON.stringify(data));
 }
 
 
@@ -16,8 +16,8 @@ export const message = (message,success,props,user,token,code,params,checked)=>{
     return {
         message:message,
         success:success,
-        user:user,
         props:props,
+        user:user,
         token:token,
         code:code,
         params:params,
@@ -33,7 +33,9 @@ export const secretcode = ()=>{
     return code;
 }
 
-
+export const LockHash = async(data)=>{
+    return CryptKey.decrypt(data);
+}
 export const generateToken = (user)=>{
     return jsonwebtoken.sign({user:user},ACCESS_TOKEN_SECRET,{expiresIn:'1d'});
 }

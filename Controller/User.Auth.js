@@ -1,6 +1,6 @@
 import { db } from '../Database/DB.js'
 import bcrypt, { hash } from 'bcryptjs'
-import { ACCESS_TOKEN_SECRET, generateToken, hasing, message, secretcode } from '../Utility/Code.js'
+import {  generateToken, hasing, LockHash, message, secretcode } from '../Utility/Code.js'
 import { setEMail, transport } from '../Utility/email.js'
 
 
@@ -19,6 +19,7 @@ export const Sigin = async (req, res) => {
             message(
             'email deja exists essaye nouveau',
             false,
+            'email',
             '',
             '')
         )
@@ -55,10 +56,9 @@ export const Sigin = async (req, res) => {
         const userMail = email.split('@')[0]
         users.push(Auth);
         await transport.sendMail(setEMail(secret,email))
-        await db.write();
-        
-        const messages = message('inscrire bien enregistre',true,'',findEmail,generateToken(findEmail),code)
+        const messages = message('inscrire bien enregistre',true,'',Auth,'',secretcode)
         res.status(201).send(await hasing(messages))
+        await db.write();
     }
 
 }
@@ -72,12 +72,12 @@ export const getUser = async (req,res)=>{
     const findUserParams = userparams.find(item => item.user_id === parseInt(id));
     if(findUser)
     {
-        const messages = message('user trouve',true,'',findEmail,generateToken(findEmail),'',findUserParams)
+        const messages = message('user trouve',true,'',findEmail,'','',findUserParams)
         res.status(201).send(await hasing(messages))
     }
     else
     {
-        const messages = message('user non trouve',false,'','','','','')
+        const messages = message('user non trouve',false)
         res.status(201).send(await hasing(messages) )
         return;
     }
@@ -97,8 +97,9 @@ export const Login = async (req, res) => {
                          if (element.email === email) element.connexion = true;
                          return element;
                      })]
-                     const messages = message('connexion valide',true,'',findEmail,generateToken(findEmail),'','',true)
-                     await db.write(await hasing(messages))
+                     const messages = message('connexion valide',true,'',findEmail,'','','',true)
+                     res.status(201).send(await hasing(messages))
+                     await db.write()
                 }
                 else{
                     const newCode = secretcode();
@@ -106,10 +107,11 @@ export const Login = async (req, res) => {
                         if(findEmail.id===element.user_id) element.code = newCode;
                         return element;
                     })]
-                    // const code = userparams.find(item=>item.user_id===findEmail.id)?.code;
-                    // await transport.sendMail(setEMail(code,email.trim()));
-                    const messages = message('veuillez confirme votre compte',true,'',findEmail,generateToken(findEmail),'','',false)
-                    await db.write(await hasing(messages));
+                    const code = userparams.find(item=>item.user_id===findEmail.id)?.code;
+                    await transport.sendMail(setEMail(code,email.trim()));
+                    const messages = message('veuillez confirme votre compte',true,'',findEmail,'',code,'',false)
+                    res.status(201).send(await hasing(messages))
+                    await db.write();
                 }
             }
             else {
@@ -128,62 +130,26 @@ export const Login = async (req, res) => {
 
 }
 
-export const verify = async (req,res)=>{
-    const { user,code } = req.body;
-    await db.read();
-    let { userparams, users } = db.data;
-    console.log(user)
-    const findUser = userparams.find(item=> item.user_id === user.id && item.code === code);
 
-    if(findUser)
-    {
-        userparams = [...userparams.map(element => {
-            if (element.user_id === findUser.id && element.code === code) {
-                element.verified = true;
-                element.checked = true;
-            }
-            return element;
-        })]
-         users = [...users.map(element => {
-            if (element.id === findUser.id) {
-                element.checked = true;
-            }
-            return element;
-        })]
-        const messages = message('code valide',true,'',findUser,generateToken(findUser))
-        res.status(201).send(await hasing(messages))
-        await db.write();
-    }
-    else
-    {
-        const messages = message('invalid code, veuillez entre nouveau',false,'',findUser,generateToken(findUser))
-        res.status(201).send(await hasing(messages))
-        return;
-    }
-}
 
 export const logout = async (req, res) => {
     const { email } = req.body
-    const token = req.headers.authorizatin?.split(' ')[1]
-    if(token)
-    {
-        blacklist.add(token)
-    }
+    const decryptEmail = await LockHash(email)
     await db.read();
     let { users } = db.data
     users = [...users.map(element => {
-        if (element.email === email) element.connexion =false;
+        if (element.email === decryptEmail) element.connexion =false;
         return element;
     })]
-    await db.write();
     const messages = message('deconnexion',true,'deconnexion')
     res.status(201).send(await hasing(messages))
+    await db.write();
 }
 
 
 export const sendMessage = async (req,res)=>{
     const {email,message} = req.body;
-    console.log(mail)
+    console.log(email)
     await db.read();
     db.data.messages ||= [];
     const { users, messages } = db.data;
@@ -203,7 +169,3 @@ export const sendMessage = async (req,res)=>{
 
 
 
-export const authVerify = async(req,res)=>{
-   const data = await hasing({name:'frederic',age:28});
-   res.status(201).send({message:'',hash:data,success:true})
-}
