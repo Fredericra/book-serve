@@ -1,7 +1,6 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import cors from 'cors'
-import { db }  from './Database/DB.js'
 import useRoute from './Route/User.route.js'
 
 const Port = 5000

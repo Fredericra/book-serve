@@ -1,0 +1,40 @@
+{
+  "lists": [
+    {
+      "titre": "DICTIONNAIRE LAROUSSE",
+      "id": 0,
+      "user_id": "1",
+      "prix": "22 000 ariary",
+      "reference": "60 000 mots examples",
+      "type": "DICTIONNAIRE",
+      "description": "Le vocabulaire essentiel de la langue française claire et précises\r\nPlus de 60 000 mots, définitions et exemples\r\nLes tableaux de conjugaison\r\nUn guide du savoir rédiger",
+      "namefile": "60000mots.jpg",
+      "date": "2025/08/04",
+      "timesDate": "Mon Aug 04 2025"
+    },
+    {
+      "titre": "DICTIONNAIRE LAROUSSE",
+      "id": 1,
+      "user_id": "1",
+      "prix": "22 000 ariary",
+      "reference": "30 000 mots examples",
+      "type": "DICTIONNAIRE",
+      "description": "Le vocabulaire essentiel de la langue française claire et précises\r\nPlus de 60 000 mots, définitions et exemples\r\nLes tableaux de conjugaison\r\nUn guide du savoir rédiger",
+      "namefile": "Larousse3000.jpg",
+      "date": "2025/08/04",
+      "timesDate": "Mon Aug 04 2025"
+    }
+  ],
+  "images": [
+    {
+      "id": 0,
+      "product_id": 0,
+      "url": "https://res.cloudinary.com/djsqlgkv2/image/upload/v1754300312/product/ceim9dzntocpbtj4o4ei.jpg"
+    },
+    {
+      "id": 1,
+      "product_id": 1,
+      "url": "https://res.cloudinary.com/djsqlgkv2/image/upload/v1754300372/product/lgfochcetwy2ubxgmxbj.jpg"
+    }
+  ]
+}
